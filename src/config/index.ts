@@ -7,6 +7,11 @@ const config = {
   api: {
     env: process.env.NODE_ENV ?? "development",
     port: process.env.PORT ?? 3000,
+    cookieDomain: process.env.COOKIE_DOMAIN ?? "localhost",
+  },
+
+  secrets: {
+    jwt: process.env.JWT_SECRET ?? "default_jwt_secret",
   },
 
   swagger: {

@@ -6,9 +6,15 @@ import cookieParser from "cookie-parser";
 import swaggerUI from "swagger-ui-express";
 
 import config, { swaggerSpec } from "./config";
-import helloRouter from "./api/v1/routes/hello.router";
+import authRouter from "./api/v1/routes/auth.router";
 
 import type { Express } from "express";
+
+declare module "express-serve-static-core" {
+  interface Request {
+    user: string;
+  }
+}
 
 const app: Express = express();
 
@@ -19,7 +25,7 @@ app.use(bodyParser.json());
 
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
-app.use("/api/v1/hello", helloRouter);
+app.use("/api/v1/auth", authRouter);
 
 export function runApp(): void {
   try {
