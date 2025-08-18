@@ -4,6 +4,8 @@ import { getCookiesOptions } from "../../../utils/cookies";
 import { HTTP_STATUS_CODE } from "../../../utils/constants";
 import { SUCCESS_RESPONSE, ERROR_RESPONSE } from "../../../lib/customHandler";
 
+import { createUserIfNotExists } from "../services/auth.service";
+
 import type { Response, Request } from "express";
 
 const authController = {
@@ -24,6 +26,8 @@ const authController = {
           "Invalid signature. Please sign the message with your wallet."
         );
       }
+
+      await createUserIfNotExists(address);
 
       const token = generateJWT(address);
       res.cookie("jwtToken", token, getCookiesOptions());

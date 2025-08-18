@@ -18,4 +18,6 @@ model Account {
   id        String   @id @default(uuid())
   wallet    String   @unique
   createdAt DateTime @default(now())
+
+  @@index([wallet])
 }
