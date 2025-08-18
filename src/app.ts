@@ -7,12 +7,13 @@ import swaggerUI from "swagger-ui-express";
 
 import config, { swaggerSpec } from "./config";
 import authRouter from "./api/v1/routes/auth.router";
+import deploymentsRouter from "./api/v1/routes/deployments.router";
 
 import type { Express } from "express";
 
 declare module "express-serve-static-core" {
   interface Request {
-    user: string;
+    user: { address: string };
   }
 }
 
@@ -26,6 +27,7 @@ app.use(bodyParser.json());
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/deployments", deploymentsRouter);
 
 export function runApp(): void {
   try {

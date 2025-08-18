@@ -10,6 +10,9 @@
     "prettier",
   ],
   "rules": {
+    // allow any
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "prettier/prettier": "error",
     "no-var": "error",

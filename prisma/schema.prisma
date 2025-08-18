@@ -21,3 +21,20 @@ model Account {
 
   @@index([wallet])
 }
+
+model Deployment {
+  id          String  @id @default(uuid())
+  name        String
+  description String?
+  category    String // ERC20, ERC721, etc.
+  address     String? // null if not deployed
+  abi         String? // null if not compiled
+  deployedTx  String? // null if not deployed
+  status      String
+
+  wallet    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([wallet])
+}

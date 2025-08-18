@@ -6,7 +6,7 @@ import { HTTP_STATUS_CODE } from "../../../utils/constants";
 
 import type { Request, Response, NextFunction } from "express";
 
-const authenticateToken = (
+export const authenticateToken = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -31,9 +31,7 @@ const authenticateToken = (
         "Invalid token. Please provide a valid JWT token."
       );
     }
-    req.user = decoded as string;
+    req.user = decoded as { address: string };
     next();
   });
 };
-
-export default authenticateToken;
