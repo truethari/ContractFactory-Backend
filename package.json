@@ -15,7 +15,8 @@
     "check:outdated": "npm outdated",
     "update": "npm update",
     "prepare": "husky",
-    "test": "npm run format && npm run lint && npm run build"
+    "test": "npm run format && npm run lint && npm run build",
+    "deploy": "tar --exclude-from=.tarignore -cvf ../cfbe.tar . && caprover deploy -t ../cfbe.tar && rm ../cfbe.tar"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.4.0",
