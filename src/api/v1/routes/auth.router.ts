@@ -4,8 +4,8 @@ import sanitize from "../middlewares/sanitize.middleware";
 import authController from "../controllers/auth.controller";
 import validationSchema from "../middlewares/schema.middleware";
 
-const authRouter = express.Router();
+const router = express.Router();
 
-authRouter.post("/login", [sanitize, validationSchema(loginSchema)], authController.login);
+router.post("/login", [sanitize, validationSchema(loginSchema)], authController.login);
 
-export default authRouter;
+export default router;
